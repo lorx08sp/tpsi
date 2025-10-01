@@ -1,0 +1,28 @@
+name: Java Build and Run
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # Puoi cambiare la versione di Java se vuoi
+
+    - name: Compile Java code
+      run: javac RepeatedMessage.java
+
+    - name: Run the Java program
+      run: java RepeatedMessage
